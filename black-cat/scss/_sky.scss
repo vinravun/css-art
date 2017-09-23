@@ -1,0 +1,91 @@
+
+
+.sky {
+	height: 300px;
+	background: radial-gradient($sky-color1, $sky-color2);
+	overflow: hidden;
+	position: relative;
+
+	.moon {
+		width: $moon-size;
+		height: $moon-size;
+		border-radius: 50%;
+		background-color: $moon-color;
+		box-shadow: 0 0 150px $moon-color, inset 0 1px 20px $moon-shadow-inner-color;
+		position: absolute;
+		top: 30px;
+		right: 100px;
+	}
+
+	.cloud {
+		width: $cloud-width;
+		height: $cloud-height;
+		background-color: $cloud-color;
+		border-radius: 50px;
+		box-shadow: inset 0 -1px 10px $cloud-shadow-color;
+		position: relative;
+		top: 60px;
+		left: 30px;
+		animation: shift 100s infinite linear;
+
+		&:nth-child(2) {
+			transform: scale(-1.5, 1.3);
+			top: 100px;
+			left: 250px;
+			animation-duration: 40s;
+		}
+
+		&:last-child {
+			top: 150px;
+			left: 100px;
+			transform: scale(2);
+			animation-duration: 60s;
+		}
+		
+		&::before, &::after {
+			content: '';
+			display: block;
+			width: $cloud-width/2.5;
+			height: $cloud-height;
+			background-color: inherit;
+			border-radius: 50%;
+			position: relative;
+			top: -15px;
+			left: 35px;		
+		}
+
+		&::after {
+			top: -40px;
+			left: 10px;
+		}	
+	}
+
+	.stars {
+		width: $star-size;
+		height: $star-size;
+		background-color: $stars-color;
+		border-radius: 50%;
+		position: relative;
+		left: 100px;
+		top: 100px;
+	}
+}
+
+@for $i from 1 through 15 {
+	   $bs : "";
+	   @for $j from 1 through $i {
+	     $bs : $bs + (random(450)-100) + "px "+(random(250)-100) + "px" + " 0px 0px #{$stars-color}, ";
+	   }
+	   .stars {
+	   		box-shadow: #{$bs} 100px 10px 0px 0px $stars-color;
+	   	}	
+}
+
+@keyframes shift {
+	0% {
+	     margin-left: -500px;
+	 }
+	 100% {
+	     margin-left: 100%;
+	 }
+}

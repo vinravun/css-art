@@ -1,0 +1,43 @@
+
+$sky-color1: #112A71;
+$sky-color2: #000A31;
+
+$stars-color: white;
+
+$moon-color: #FEFF79;
+$moon-shadow-inner-color: rgba(0, 0, 0, 0.3);
+
+$cloud-color: #8D8D8D;
+$cloud-shadow-color: $moon-shadow-inner-color;
+
+$cat-color: #131313;
+$eye-color: #00D382;
+$pupil-color: #4C4C4C;
+$inner-ear-color: #141414;
+
+$wall-color1: #000C23;
+$wall-color2: #000000;
+
+
+$star-size: 1px;
+
+$moon-size: 80px;
+
+$cloud-width: 80px;
+$cloud-height: 30px;
+
+$wall-height: 250px;
+
+$head-width: 40px;
+$head-height: $head-width;
+$ear-width: 6px;
+$ear-height: 2px;
+$eye-width: 6px;
+$eye-height: $eye-width;
+$body-width: 38px;
+$body-height: 80px;
+
+$z-index-ear: 2;
+$z-index-eye: 5;
+
+

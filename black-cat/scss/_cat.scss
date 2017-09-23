@@ -1,0 +1,136 @@
+
+
+
+.wall {
+	height: $wall-height;
+	background: radial-gradient(ellipse at top, $wall-color1, $wall-color2);
+	position: relative;
+	top: 0px;
+
+	.cat {
+		position: absolute;
+		top: 0 - ($head-height + $body-height -15);
+		left: 90px;
+	}
+}
+
+.cat-head {
+	width: $head-width;
+	height:  $head-height;
+	background-color: $cat-color;
+	border-radius: 50% 50% 100% 100%;
+	position: relative;
+
+	// ears
+	&::before, &::after {
+		width: $ear-width;
+		height: $ear-height;
+		content: '';
+		background-color: inherit;
+		border-radius: 5% 100% 0 0;
+		border-top: 10px solid $cat-color;
+		border-left: 4px solid $inner-ear-color;
+		position: absolute;
+		transform: rotate(-5deg);
+		top: -6px;
+		left: 0px;
+		z-index: $z-index-ear;
+	}
+
+	&::after {
+		left:  auto;
+		right: 0px;
+		transform: scaleX(-1) rotate(-5deg);
+		animation: wiggle 3s ease-in infinite;
+	}
+	
+	.eyes {
+		height: 30px;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+
+		.eye {
+			width: $eye-width;
+			height: $eye-height;
+			background-color: $pupil-color;
+			border-radius: 50%;
+			box-shadow: 0 0 0 3px $eye-color;
+			z-index: $z-index-eye;
+			position: relative;
+			animation: blink 3s ease-out infinite;
+
+			&::after {
+				content: '';
+				width: 2px;
+				height: 2px;
+				background-color: #FFDFDF;
+				border-radius: 50%;
+				position: absolute;
+				top: 0px;
+				left: 3px;
+			}
+
+			&:last-child {
+				transform: scaleX(-1);
+
+				&::after {
+					left: auto;
+					right: 3px;
+				}
+			}
+		}
+	}
+}
+
+.cat-body {
+	height: $body-height;
+	width: $body-width;
+	background: $cat-color;
+	border-radius: 100% 100% 70% 70%;
+	position: relative;
+	top: -12px;
+
+	.tail {
+		width: 40px;
+		height: 10px;
+		background-color: transparent;
+		border-radius:50%;
+		border: 8px solid $cat-color;
+		border-left-color: transparent;
+		border-top-color: transparent;
+		position: absolute;
+		bottom:0px;
+		left: 5px;
+
+		&::after {
+			content: '';
+			width: 9px;
+			height: 10px;
+			background-color: $cat-color;
+			position: absolute;
+			right: -5px;
+			border-radius: 50%;
+			top: -4px;
+			transform: skew(44deg, -26deg);
+		}
+	}
+}
+
+@keyframes blink {
+	78%, 82%, 86%, 90% {
+		opacity: 1;
+	}
+	80%, 88% {
+		opacity: 0;
+	}
+}
+
+@keyframes wiggle {
+	50%, 60% {
+		transform: scaleX(-1) rotate(-5deg);
+	}
+	55% {
+		transform: scaleX(-1) rotate(-30deg);
+	}
+}
